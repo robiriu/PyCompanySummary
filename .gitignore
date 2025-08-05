@@ -125,3 +125,6 @@ company_summarizer.log
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# forge
+forge.yaml
