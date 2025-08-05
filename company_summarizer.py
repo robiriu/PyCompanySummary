@@ -104,7 +104,7 @@ class CompanySummarizer:
             spreadsheet = self.gc.create(sheet_name)
             
             # Get the first worksheet and populate it
-            worksheet = spreadsheet.sheet1
+            worksheet = spreadsheet.data
             worksheet.update('A1', sample_companies)
             
             # Format the header row
@@ -134,7 +134,7 @@ class CompanySummarizer:
             logger.error(f"Failed to open spreadsheet: {e}")
             raise
     
-    def read_companies(self, worksheet_name: str = "Sheet1") -> List[Dict]:
+    def read_companies(self, worksheet_name: str = "data") -> List[Dict]:
         """
         Read company data from the specified worksheet.
         
@@ -213,7 +213,7 @@ class CompanySummarizer:
             logger.error(f"Failed to generate summary for {company_name}: {e}")
             return f"Error generating summary: {str(e)}"
     
-    def process_companies(self, input_worksheet: str = "Sheet1") -> List[Dict]:
+    def process_companies(self, input_worksheet: str = "data") -> List[Dict]:
         """
         Process all companies and generate summaries.
         
@@ -298,7 +298,7 @@ class CompanySummarizer:
             logger.error(f"Failed to write summaries to sheet: {e}")
             raise
     
-    def run_full_analysis(self, spreadsheet_url: str, input_sheet: str = "Sheet1", output_sheet: str = "Company Summaries"):
+    def run_full_analysis(self, spreadsheet_url: str, input_sheet: str = "data", output_sheet: str = "Company Summaries"):
         """
         Run the complete analysis pipeline.
         
