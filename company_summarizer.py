@@ -5,8 +5,8 @@ Company Summarizer Script
 This script reads company names from a Google Sheet, uses OpenAI's GPT API to generate
 summaries of what each company does, and outputs the results to a new tab in the same sheet.
 
-Author: Generated for PyCompanySummary project
-Date: 2024
+Author: Robi Dany Riupassa (Assisted by forge code assistant)
+Date: 2025-08-05
 """
 
 import os
