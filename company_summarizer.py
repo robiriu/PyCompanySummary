@@ -17,8 +17,11 @@ import pandas as pd
 import gspread
 from google.oauth2.service_account import Credentials
 from openai import OpenAI
+from groq import Groq
 import json
 from datetime import datetime
+from dotenv import load_dotenv
+load_dotenv()
 
 # Configure logging
 logging.basicConfig(
@@ -37,7 +40,7 @@ class CompanySummarizer:
     A class to handle company data processing from Google Sheets using OpenAI API.
     """
     
-    def __init__(self, credentials_path: str, openai_api_key: str):
+    def __init__(self, credentials_path: str, groq_api_key: str):
         """
         Initialize the CompanySummarizer with necessary credentials.
         
@@ -46,7 +49,7 @@ class CompanySummarizer:
             openai_api_key (str): OpenAI API key
         """
         self.credentials_path = credentials_path
-        self.openai_client = OpenAI(api_key=openai_api_key)
+        self.groq_client = Groq(api_key=groq_api_key)
         self.gc = None
         self.spreadsheet = None
         
@@ -185,8 +188,8 @@ class CompanySummarizer:
         """
         
         try:
-            response = self.openai_client.chat.completions.create(
-                model="gpt-3.5-turbo",
+            response = self.groq_client.chat.completions.create(
+                model="llama3-8b-8192",
                 messages=[
                     {
                         "role": "system", 
@@ -331,12 +334,12 @@ def main():
     """
     # Configuration - these should be set as environment variables
     CREDENTIALS_PATH = os.getenv('GOOGLE_CREDENTIALS_PATH', 'credentials.json')
-    OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+    GROQ_API_KEY = os.getenv('GROQ_API_KEY')
     SPREADSHEET_URL = os.getenv('SPREADSHEET_URL')
     
-    if not OPENAI_API_KEY:
-        print("Error: OPENAI_API_KEY environment variable not set")
-        print("Please set your OpenAI API key: export OPENAI_API_KEY='your-api-key-here'")
+    if not GROQ_API_KEY:
+        print("Error: GROQ_API_KEY environment variable not set")
+        print("Please set your Groq API key: export GROQ_API_KEY='your-api-key-here'")
         return
     
     if not os.path.exists(CREDENTIALS_PATH):
@@ -346,7 +349,7 @@ def main():
     
     try:
         # Initialize the summarizer
-        summarizer = CompanySummarizer(CREDENTIALS_PATH, OPENAI_API_KEY)
+        summarizer = CompanySummarizer(CREDENTIALS_PATH, GROQ_API_KEY)
         
         # If no spreadsheet URL provided, create a sample one
         if not SPREADSHEET_URL:
