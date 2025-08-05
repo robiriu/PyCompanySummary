@@ -12,7 +12,7 @@ export async function GET() {
 
     const sheets = google.sheets({ version: 'v4', auth })
     const spreadsheetId = process.env.SPREADSHEET_ID!
-    const range = 'data!A2:C' // Skip header
+    const range = "'data'!A2:C"
 
     try {
         const res = await sheets.spreadsheets.values.get({ spreadsheetId, range })
