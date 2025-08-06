@@ -1,11 +1,11 @@
 # Company Summarizer
 
-A Python script that automatically reads company names from a Google Sheet, generates AI-powered summaries of what each company does using OpenAI's GPT API, and outputs the results to a new tab in the same Google Sheet.
+A Python script that automatically reads company names from a Google Sheet, generates AI-powered summaries of what each company does using Groq's Llama API, and outputs the results to a new tab in the same Google Sheet.
 
 ## Features
 
 -  **Google Sheets Integration**: Seamlessly reads from and writes to Google Sheets
--  **AI-Powered Summaries**: Uses OpenAI GPT to generate concise company descriptions
+-  **AI-Powered Summaries**: Uses Groq's Llama models to generate concise company descriptions
 -  **Automated Processing**: Processes multiple companies in batch with rate limiting
 -  **Comprehensive Logging**: Detailed logging for monitoring and debugging
 -  **Error Handling**: Robust error handling and recovery mechanisms
@@ -17,7 +17,7 @@ A Python script that automatically reads company names from a Google Sheet, gene
 
 1. **Python 3.8+** installed on your system
 2. **Google Cloud Project** with Sheets API enabled
-3. **OpenAI API key**
+3. **Groq API key**
 
 ### Installation
 
@@ -34,9 +34,9 @@ pip install -r requirements.txt
 
 3. Set up Google Sheets API credentials (see detailed setup below)
 
-4. Set your OpenAI API key as an environment variable:
+4. Set your Groq API key as an environment variable:
 ```bash
-export OPENAI_API_KEY="your-openai-api-key-here"
+export GROQ_API_KEY="your-groq-api-key-here"
 ```
 
 5. Run the script:
@@ -73,10 +73,10 @@ python company_summarizer.py
    - Click "Share"
    - Add the service account email (found in credentials.json) with "Editor" permissions
 
-### OpenAI API Setup
+### Groq API Setup
 
 1. **Get API Key**:
-   - Go to [OpenAI Platform](https://platform.openai.com/)
+   - Go to [Groq Console](https://console.groq.com/)
    - Create an account or log in
    - Go to API Keys section
    - Create a new API key
@@ -84,10 +84,10 @@ python company_summarizer.py
 2. **Set Environment Variable**:
 ```bash
 # On Linux/Mac
-export OPENAI_API_KEY="your-api-key-here"
+export GROQ_API_KEY="your-api-key-here"
 
 # On Windows
-set OPENAI_API_KEY=your-api-key-here
+set GROQ_API_KEY=your-api-key-here
 ```
 
 ## Usage
@@ -180,7 +180,7 @@ You are a business analyst providing accurate, concise company summaries based o
 
 ### Technical Parameters
 
-- **Model**: GPT-3.5-turbo (cost-effective, suitable for this task)
+- **Model**: Llama3-8b-8192 (cost-effective, high-performance model from Groq)
 - **Temperature**: 0.3 (lower temperature for more consistent, factual responses)
 - **Max Tokens**: 150 (ensures concise responses)
 - **Rate Limiting**: 0.5-second delay between requests
@@ -197,7 +197,7 @@ You are a business analyst providing accurate, concise company summaries based o
 
 ### Environment Variables
 
-- `OPENAI_API_KEY`: Your OpenAI API key (required)
+- `GROQ_API_KEY`: Your Groq API key (required)
 - `GOOGLE_CREDENTIALS_PATH`: Path to Google credentials JSON (default: "credentials.json")
 - `SPREADSHEET_URL`: URL of your Google Spreadsheet (optional for sample creation)
 
@@ -207,7 +207,7 @@ You can modify the script behavior by editing these parameters in `company_summa
 
 ```python
 # Model selection
-model="gpt-3.5-turbo"  # or "gpt-4" for higher quality
+model="llama3-8b-8192"  # Groq's Llama model
 
 # Response parameters
 max_tokens=150         # Increase for longer summaries
@@ -255,8 +255,8 @@ PyCompanySummary/
    - Verify your service account has the correct permissions
    - Ensure the Google Sheets and Drive APIs are enabled
 
-3. **"OpenAI API key not set"**
-   - Set the environment variable: `export OPENAI_API_KEY="your-key"`
+3. **"Groq API key not set"**
+   - Set the environment variable: `export GROQ_API_KEY="your-key"`
    - Check that the key is valid and has sufficient credits
 
 4. **"Permission denied" on Google Sheets**
