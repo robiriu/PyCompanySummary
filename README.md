@@ -282,62 +282,8 @@ Feel free to submit issues, feature requests, or pull requests to improve this t
 
 ## License
 
-This project is provided as-is for educational and commercial use. Please ensure compliance with OpenAI's and Google's terms of service when using their APIs.
+This project is provided as-is for educational and commercial use. Please ensure compliance with Groq and Google's terms of service when using their APIs.
 
 ---
 
 **Need Help?** Check the troubleshooting section above or review the logs for detailed error information.
-## Demo
-
-To showcase how the Company Summarizer script works, I have built a simple and professional web interface that demonstrates the functionality in action. This demo website simulates the actual script behavior and shows the results in a user-friendly format.
-
-### Live Demo
-
-The demo is deployed on Vercel and connected to this GitHub repository. You can view it at: [Company Summarizer Demo](https://your-vercel-deployment-url.vercel.app)
-
-### Demo Features
-
-- **Interactive Interface**: Shows the company analysis process in real-time
-- **Sample Data**: Pre-loaded with real companies (Apple, Microsoft, Amazon, etc.)
-- **Processing Simulation**: Demonstrates how the script processes each company
-- **Results Display**: Shows AI-generated summaries in a clean, professional table
-- **Status Tracking**: Visual indicators for pending, processing, and completed analyses
-
-### How the Demo Works
-
-The demo website is built using Next.js and deployed on Vercel. It simulates the actual Python script functionality:
-
-1. **Input Simulation**: Shows sample company data that would normally be read from Google Sheets
-2. **Processing Animation**: Demonstrates the AI analysis process with realistic timing
-3. **Results Presentation**: Displays the summaries in a format similar to what appears in Google Sheets
-4. **Export Functionality**: Shows how results can be exported (simulated)
-
-### Important Note
-
-This is a **demonstration only**. The actual Company Summarizer script (`company_summarizer.py`) operates differently:
-
-- **Real Google Sheets Integration**: Reads from and writes to actual Google Spreadsheets
-- **Live OpenAI API**: Makes real API calls to generate company summaries
-- **Persistent Data**: Results are saved to your Google Drive
-- **Production Features**: Includes error handling, logging, and rate limiting
-
-The demo serves as a visual representation of what the script accomplishes, making it easier to understand the workflow and results before setting up the full Python environment.
-
-### Running the Demo Locally
-
-If you want to run the demo website locally:
-
-```bash
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-
-# Build for production
-npm run build
-```
-
-The demo website files are separate from the main Python script and do not interfere with the core functionality.
-
----
