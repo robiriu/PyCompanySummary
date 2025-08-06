@@ -230,17 +230,7 @@ PyCompanySummary/
 ├── credentials.json        # Google API credentials (you create this)
 ├── company_summarizer.log  # Log file (created automatically)
 ├── .env                    # Environment variables (optional)
-│
-├── Demo Website (Next.js):
-├── app/
-│   ├── globals.css         # Global styles
-│   ├── layout.tsx          # Root layout
-│   └── page.tsx            # Main demo page
-├── package.json            # Node.js dependencies for demo
-├── next.config.js          # Next.js configuration
-├── tailwind.config.js      # Tailwind CSS configuration
-├── tsconfig.json           # TypeScript configuration
-└── vercel.json             # Vercel deployment configuration
+
 ```
 
 ## Troubleshooting
